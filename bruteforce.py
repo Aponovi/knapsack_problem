@@ -11,7 +11,7 @@ sold = AMOUNT_PER_CUSTOMERS
 with open('rendement_actions.csv', newline='') as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
-        actions.append((row['Actions #'], row['Cout par action (en euros)'], row['Benefice (apres 2 ans)']))
+        actions.append((row['name'], int(float(row['price'])), float(row['profit'])))
 
 print(f"\nSomme à investir : {sold} €\n")
 
@@ -26,7 +26,7 @@ for i in range(1, len(actions)+1):
 
 for combinaison in combinaisons:
     if fonctions.verification(combinaison):
-        win = round(fonctions.total_gain(combinaison), 2)
+        win = round(fonctions.total_gain(combinaison, False), 2)
         results.append((combinaison, win))
         if win > big_win:
             big_win = win
