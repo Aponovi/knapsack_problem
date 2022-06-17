@@ -17,6 +17,7 @@ for action in actions:
     list_actions.append((action[0], action[1], fonctions.benefice_for_an_action(action)))
 
 
-big_win, best_to_do = fonctions.dynamic_wallet(sold, list_actions)
+big_win, best_to_do, investissement = fonctions.dynamic_wallet(sold, list_actions)
 
 print(f"le meilleur rendement est de : {big_win} €.\n Il faut pour cela investir les actions suivantes : {best_to_do}")
+print(f"Investissement: {investissement}")

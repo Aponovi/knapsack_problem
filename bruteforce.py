@@ -7,7 +7,6 @@ AMOUNT_PER_CUSTOMERS = 500
 actions = []
 sold = AMOUNT_PER_CUSTOMERS
 
-
 with open('rendement_actions.csv', newline='') as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
@@ -19,8 +18,9 @@ combinaisons = []
 results = []
 big_win = 0
 best_to_do = []
+investissement = 0
 
-for i in range(1, len(actions)+1):
+for i in range(1, len(actions) + 1):
     els = [list(x) for x in itertools.combinations(actions, i)]
     combinaisons.extend(els)
 
@@ -32,4 +32,9 @@ for combinaison in combinaisons:
             big_win = win
             best_to_do = combinaison
 
+
+for action in best_to_do:
+    investissement += action[1]
+
+print(f"Pour un investissement de : {investissement}")
 print(f"le meilleur rendement est de : {big_win} €. Il faut pour cela investir les actions suivantes : {best_to_do}")

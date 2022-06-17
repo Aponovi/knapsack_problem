@@ -42,12 +42,14 @@ def dynamic_wallet(argent_disponible, lst_actions):
                 matrice[i][j] = matrice[i - 1][j]
 
     w = argent_disponible
+    investissement = 0
     n = len(lst_actions)
     selection = []
     while w >= 0 and n >= 0:
         a = lst_actions[n - 1]
         if matrice[n][w] == matrice[n - 1][w - a[1]] + a[2]:
             w -= a[1]
+            investissement += a[1]/100
             selection.append((a[0], a[1] / 100, a[2] / 100))
         n -= 1
-    return matrice[-1][-1] / 100, selection
+    return matrice[-1][-1] / 100, selection, investissement
